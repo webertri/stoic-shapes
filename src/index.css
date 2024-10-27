@@ -1,0 +1,35 @@
+:root {
+    --palette-lightblue: #cbdceb;
+    --palette-blue: #608bc1;
+    --palette-darkblue: #133E87;
+    --palette-light: #f3f3e0;
+}
+
+body {
+    text-align: center;
+    font-family: 'Monaco';
+    color: var(--palette-darkblue);
+    background-color: var(--palette-lightblue);
+}
+
+canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    width: 100%;
+    max-width: 800px;
+
+    aspect-ratio: 16/9;
+
+    background-color: var(--palette-light);
+}
+
+a:link {
+    text-decoration: underline;
+    color: var(--palette-darkblue);
+}
+
+a:visited {
+    text-decoration: underline;
+    color: var(--palette-darkblue);
+}
