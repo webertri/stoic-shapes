@@ -16,11 +16,6 @@ canvas {
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 
-    width: 100%;
-    max-width: 800px;
-
-    aspect-ratio: 16/9;
-
     background-color: var(--palette-light);
 }
 
