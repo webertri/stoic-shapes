@@ -4,8 +4,9 @@
     Implements draw().
 */
 class Wall {
-    constructor(x, y, color, size) {
-        this.name = "wall";
+    constructor(id, name, x, y, color, size) {
+        this.id = id;
+        this.name = name;
         this.x = x;
         this.y = y;
         this.color = color;

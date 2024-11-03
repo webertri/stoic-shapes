@@ -8,7 +8,7 @@
     Use the getDirectionFromKeys() function to get the
     cardinal and ordinal directions used to control the player.
 
-    keyDown and keyUp should be called from event listeners.
+    keyDown() and keyUp() should be called from event listeners.
 */
 class InputHandler {
     constructor() {
@@ -46,7 +46,7 @@ class InputHandler {
         });
     */
     keyUp(code) {
-        if (code != undefined && event.code != null) {
+        if (code != undefined && code != null) {
             if (code == "ArrowUp" && this.keys.indexOf("N") != -1) {
                 this.keys.splice(this.keys.indexOf("N"), 1);
             } else if (code == "ArrowDown" && this.keys.indexOf("S") != -1) {

@@ -1,28 +1,25 @@
 import { InputHandler } from './modules/input-handler.js'
+import { Map } from './modules/map.js'
 import { Player } from './modules/player.js'
 import { Wall } from './modules/wall.js'
 
-// ----- GLOBAL VARS -----
-
-// main
+// ----- START -----
 let canvas = document.getElementById("game");
 let ctx = canvas.getContext("2d");
 let inputHandler = new InputHandler();
+let player = new Player(0, "player", 0, 0, 1, "red", 20);
+let map = new Map(0, "TestMap");
 
-// map
-let walls = [];
-let player = new Player(0, 0, 1, "red", 20);
-
-let inputText = document.getElementById("input");
-
-// ----- GAME FUNCTIONS -----
+setup();
+gameLoop();
+// -----------------
 
 function setup() {
     // Set canvas size
     canvas.width = 700;
     canvas.height = 400;
 
-    // Add event listeners
+    // Add event listeners for input
     window.addEventListener("keydown", function (event) {
         inputHandler.keyDown(event.code);
     });
@@ -30,36 +27,23 @@ function setup() {
         inputHandler.keyUp(event.code);
     });
 
-    // Example walls
-    walls.push(new Wall (20, 20, "black", 20));
-    walls.push(new Wall (40, 20, "black", 20));
-    walls.push(new Wall (60, 40, "black", 20));
+    // Add player to map
+    map.spawn(player);
+
+    // Spawn some walls
+    map.spawn(new Wall(0, "wall", 20, 20, "black", 20));
 }
 
 function gameLoop() {
     // Clear the screen
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    // Draw the walls
-    walls.forEach(function (wall) {
-        wall.draw(ctx);
-    });
-
     // Move the player
-    let dir = inputHandler.getDirectionFromKeys();
-    player.move(dir);
+    player.move(inputHandler.getDirectionFromKeys());
 
-    // Draw the player
-    player.draw(ctx);
-
-    // Show current dir based on key presses
-    inputText.innerHTML = dir;
+    // Map calls entity draw() functions
+    map.draw(ctx);
 
     // Call gameLoop()
     requestAnimationFrame(gameLoop);
 }
-
-// ----- START -----
-
-setup();
-gameLoop();

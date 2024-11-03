@@ -4,8 +4,9 @@
     Implements move() and draw().
 */
 class Player {
-    constructor(x, y, speed, color, size) {
-        this.name = "player";
+    constructor(id, name, x, y, speed, color, size) {
+        this.id = id;
+        this.name = name;
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -25,38 +26,43 @@ class Player {
         SW  S  SE
     */
     move(dir) {
+        const DIAGONAL_SPEED_MODIFIER = 1.41;
+
         switch (dir) {
             case null:
-                this.x = Math.floor(this.x);
-                this.y = Math.floor(this.y);
+                // When the player stops moving, align to the
+                // nearest integer grid location. This helps
+                // retain a crisp look when not moving.
+                this.x = Math.round(this.x);
+                this.y = Math.round(this.y);
                 break;
             case "N":
                 this.y = this.y - this.speed;
                 break;
             case "NE":
-                this.x = this.x + (this.speed / 1.5);
-                this.y = this.y - (this.speed / 1.5);
+                this.x = this.x + (this.speed / DIAGONAL_SPEED_MODIFIER);
+                this.y = this.y - (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
             case "E":
                 this.x = this.x + this.speed;
                 break;
             case "SE":
-                this.x = this.x + (this.speed / 1.5);
-                this.y = this.y + (this.speed / 1.5);
+                this.x = this.x + (this.speed / DIAGONAL_SPEED_MODIFIER);
+                this.y = this.y + (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
             case "S":
                 this.y = this.y = this.y + this.speed;
                 break;
             case "SW":
-                this.x = this.x - (this.speed / 1.5);
-                this.y = this.y + (this.speed / 1.5);
+                this.x = this.x - (this.speed / DIAGONAL_SPEED_MODIFIER);
+                this.y = this.y + (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
             case "W":
                 this.x = this.x - this.speed;
                 break;
             case "NW":
-                this.x = this.x - (this.speed / 1.5);
-                this.y = this.y - (this.speed / 1.5);
+                this.x = this.x - (this.speed / DIAGONAL_SPEED_MODIFIER);
+                this.y = this.y - (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
         }
     }
