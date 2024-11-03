@@ -7,14 +7,14 @@
     Implements draw().
 */
 class Area {
-    constructor(id, name, areaType, x, y, color, size) {
+    constructor(id, name, areaType, x, y, size, color) {
         this.id = id;
         this.name = name;
         this.areaType = areaType;
         this.x = x;
         this.y = y;
-        this.color = color;
         this.size = size;
+        this.color = color;
     }
 
     /*

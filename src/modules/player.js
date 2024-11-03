@@ -4,14 +4,14 @@
     Implements move() and draw().
 */
 class Player {
-    constructor(id, name, x, y, speed, color, size) {
+    constructor(id, name, x, y, size, speed, color) {
         this.id = id;
         this.name = name;
         this.x = x;
         this.y = y;
+        this.size = size;
         this.speed = speed;
         this.color = color;
-        this.size = size;
     }
 
     /*
@@ -67,9 +67,6 @@ class Player {
         }
     }
 
-    /*
-        `ctx` is the canvas 2d context to draw to.
-    */
     draw(ctx) {
         ctx.beginPath();
         ctx.rect(this.x, this.y, this.size, this.size);

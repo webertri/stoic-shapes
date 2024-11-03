@@ -4,18 +4,15 @@
     Implements draw().
 */
 class Wall {
-    constructor(id, name, x, y, color, size) {
+    constructor(id, name, x, y, size, color) {
         this.id = id;
         this.name = name;
         this.x = x;
         this.y = y;
-        this.color = color;
         this.size = size;
+        this.color = color;
     }
 
-    /*
-        `ctx` is the canvas 2d context to draw to.
-    */
     draw(ctx) {
         ctx.beginPath();
         ctx.rect(this.x, this.y, this.size, this.size);

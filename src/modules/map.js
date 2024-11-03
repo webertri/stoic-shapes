@@ -25,8 +25,6 @@ class Map {
     spawn(entity) {
         // Return false if entity is undefined, null, or hasn't implemented the draw function
         if (entity == undefined || entity == null || !Object.hasOwn(entity, "id")) {
-            // console.log("Entity spawn failed, does it have draw? " + Object.hasOwn(entity, "draw"));
-            console.log("Entity spawn failed, does it have id? " + Object.hasOwn(entity, "id"));
             return false;
         }
 
@@ -44,7 +42,7 @@ class Map {
     /*
         Destroys all entities with a matching id.
     */
-    destroyAll(entityId) {
+    destroy(entityId) {
         for (let i = 0; i < this.entities.length; i++) {
             if (this.entities[i].id == entityId) {
                 this.entities.splice(i, 1);
@@ -56,7 +54,7 @@ class Map {
         Calls the draw function for all entities on the map
         using the passed ctx.
     */
-    draw(ctx) {
+    drawAll(ctx) {
         this.entities.forEach(function (entity) {
             entity.draw(ctx);
         });

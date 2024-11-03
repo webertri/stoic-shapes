@@ -7,7 +7,7 @@ import { Wall } from './modules/wall.js'
 let canvas = document.getElementById("game");
 let ctx = canvas.getContext("2d");
 let inputHandler = new InputHandler();
-let player = new Player(0, "player", 0, 0, 1, "red", 20);
+let player = new Player(0, "player", 0, 0, 20, 1, "red");
 let map = new Map(0, "TestMap");
 
 setup();
@@ -31,7 +31,7 @@ function setup() {
     map.spawn(player);
 
     // Spawn some walls
-    map.spawn(new Wall(0, "wall", 20, 20, "black", 20));
+    map.spawn(new Wall(0, "wall", 20, 20, 20, "black"));
 }
 
 function gameLoop() {
@@ -42,7 +42,7 @@ function gameLoop() {
     player.move(inputHandler.getDirectionFromKeys());
 
     // Map calls entity draw() functions
-    map.draw(ctx);
+    map.drawAll(ctx);
 
     // Call gameLoop()
     requestAnimationFrame(gameLoop);
